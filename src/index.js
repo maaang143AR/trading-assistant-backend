@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const PORT = 5000;
-const { loginUser,fileUplaod } = require('./controllers/authController.js');
+const { loginUser,fileUpload } = require('./controllers/authController.js');
 const verifyToken = require('./middleware/authMiddleware.js');
 const { config } = require('dotenv');
 const { spawn } = require('child_process');
@@ -39,7 +39,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/login', loginUser);
-app.post(`/${prefix}/upload`,verifyToken, upload.single('file'), fileUplaod);
+app.post(`/${prefix}/upload`,verifyToken, upload.single('file'), fileUpload);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
