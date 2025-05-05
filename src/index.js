@@ -1,11 +1,14 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const PORT = 5000;
 const { loginUser,fileUpload } = require('./controllers/authController.js');
 const verifyToken = require('./middleware/authMiddleware.js');
 const { config } = require('dotenv');
 const { spawn } = require('child_process');
+config();
+
+const PORT = process.env.PORT || 5000;
+
 
 
 // these lines are for python script execution
@@ -25,7 +28,6 @@ python.on('close', (code) => {
 
 // End of python script execution
 // Load environment variables from .env file
-config();
 
 app.use(express.json());
 app.use(cors());
