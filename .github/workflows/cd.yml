@@ -19,11 +19,11 @@ jobs:
           chmod 600 private_key.pem
           echo "Cloning Repository"
           ssh -i private_key.pem -o StrictHostKeyChecking=no $USER@$HOST \
-            "cd trading-assistant-backend && git pull"
+            "cd trading-assistant-backend && sudo git pull"
           echo "Install dependencies"
           ssh -i private_key.pem -o StrictHostKeyChecking=no $USER@$HOST \
-            "cd trading-assistant-backend && pnpm install"
+            "cd trading-assistant-backend && sudo pnpm install"
           echo "Start PM2"
           ssh -i private_key.pem -o StrictHostKeyChecking=no $USER@$HOST \
-            "cd trading-assistant-backend && pm2 startORReload .pm2/echosystem.config.js"              
+            "cd trading-assistant-backend && sudo pm2 startORReload .pm2/echosystem.config.js"              
           rm -f private_key.pem
