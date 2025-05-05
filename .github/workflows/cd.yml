@@ -23,7 +23,4 @@ jobs:
           echo "Install dependencies"
           ssh -i private_key.pem -o StrictHostKeyChecking=no $USER@$HOST \
             "sudo -i bash -c 'export PATH=/root/.nvm/versions/node/v23.11.0/bin:\$PATH && cd /home/ubuntu/trading-assistant-backend && pnpm install && pm2 startOrReload .pm2/ecosystem.config.js'"
-          echo "Start PM2"
-          ssh -i private_key.pem -o StrictHostKeyChecking=no $USER@$HOST \
-            "sudo -i bash -c 'cd /home/ubuntu/trading-assistant-backend && pm2 startORReload .pm2/echosystem.config.js'"              
           rm -f private_key.pem
