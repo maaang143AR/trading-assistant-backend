@@ -22,8 +22,8 @@ jobs:
             "cd trading-assistant-backend && sudo git pull"
           echo "Install dependencies"
           ssh -i private_key.pem -o StrictHostKeyChecking=no $USER@$HOST \
-            "sudo -i bash -c 'cd trading-assistant-backend && pnpm install'"
+            "sudo -i bash -c 'cd /home/ubuntu/trading-assistant-backend && pnpm install'"
           echo "Start PM2"
           ssh -i private_key.pem -o StrictHostKeyChecking=no $USER@$HOST \
-            "sudo -i bash -c 'cd trading-assistant-backend && pm2 startORReload .pm2/echosystem.config.js'"              
+            "sudo -i bash -c 'cd /home/ubuntu/trading-assistant-backend && pm2 startORReload .pm2/echosystem.config.js'"              
           rm -f private_key.pem
